@@ -37,7 +37,7 @@ check_os() {
         # Backend dependencies
         dependencies=("python3" "python3-pip"
         "net-tools" "wireless-tools" "sysvinit-utils" "psmisc" "rfkill"
-        "isc-dhcp-client" "ifmetric" "python3-tk" "gksu")
+        "isc-dhcp-client" "ifmetric" "python3-tk")
         # Wpa supplicant compile dependencies
         dependencies+=("git" "libssl-dev" "libnl-genl-3-dev" "gcc" "make" "pkg-config")
         # DRC Sim Server C++

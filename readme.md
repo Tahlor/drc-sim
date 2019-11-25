@@ -1,6 +1,63 @@
 DRC Sim Server
 ---
 
+#EASY INSTRUCTIONS
+This is working for me on Ubuntu 18.04. Install server:
+
+    sudo ./install.sh
+
+Backup network config: `sudo cp /etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManagerBackup.conf`
+
+* Push sync button
+* Run server: `sudo drc-sim-backend`
+* Choose interface (e.g. `w1p1s0`)
+* Click "Get Key" tab on GUI
+* Type in card suit pattern (spades, hearts, clubs, diamonds) 
+* Click "Run Server" tab on GUI, with the following settings:
+	- Connect to Wii Network
+	- WiiU Interface: wlp1s0
+	- Normal Interface: lo
+	- Region: NA
+
+At some point, the application may change something to be "unmanaged". 
+This will temporarily destroy your ability to connect to regular WiFi networks. 
+Just replace the `NetworkManager.conf` file with your backup and restart the service (described below)
+or your computer.
+
+# Client
+Install the Android client from the Play Store OR Desktop version:
+
+Install java 8:
+`sudo apt install openjdk-8-jdk`
+
+Find the path to where that installed (e.g. `/usr/lib/jvm/java-8-openjdk-amd64/bin/java`)
+    
+    alias java8=/usr/lib/jvm/java-8-openjdk-amd64/bin/java 
+    
+Now run using JAVA 8, `java8 -jar drc-sim-client-2.0.jar`
+
+# Restore Internet Connectivity to Computer When Done
+	
+	sudo gedit /etc/NetworkManager/NetworkManager.conf
+
+Restore from backup or comment out the `unmanaged-devices` portion:
+    
+    #unmanaged-devices=mac:a4:34:d9:1d:b1:95
+   
+This is the MAC address for `w1p1s0`.
+
+Now restart the network service:
+
+    sudo service network-manager restart
+
+	# OTHER COMMANDS 
+	sudo ifconfig wlp1s0 down
+	sudo iwconfig wlp1s0 mode managed
+	sudo ifconfig wlp1s0 up
+
+
+
+
 Stable: [![Build Status](https://travis-ci.org/rolandoislas/drc-sim.svg?branch=master)](https://travis-ci.org/rolandoislas/drc-sim)
 Dev: [![Build Status](https://travis-ci.org/rolandoislas/drc-sim.svg?branch=develop)](https://travis-ci.org/rolandoislas/drc-sim)
 
