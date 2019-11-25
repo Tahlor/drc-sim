@@ -1,7 +1,8 @@
 DRC Sim Server
 ---
 
-#EASY INSTRUCTIONS
+# EASY INSTRUCTIONS
+
 This is working for me on Ubuntu 18.04. Install server:
 
     sudo ./install.sh
@@ -35,6 +36,8 @@ Find the path to where that installed (e.g. `/usr/lib/jvm/java-8-openjdk-amd64/b
     alias java8=/usr/lib/jvm/java-8-openjdk-amd64/bin/java 
     
 Now run using JAVA 8, `java8 -jar drc-sim-client-2.0.jar`
+
+Once running, go to the main screen, and have it search for the WiiU (should be at 192.168.1.11 automatically if running from the same computer as the server).
 
 # Restore Internet Connectivity to Computer When Done
 	
